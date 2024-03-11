@@ -4,8 +4,9 @@ SQLM8 is a web application that allows users to execute SQL queries and visualiz
 
 ### Deployment
 
+**Important Note**: Please note, I am using free instances @vercel/postgres via a hobby account. Therefore, the database instance has a cold start whenever it is inactive for 300ms, which is why you may see a slightly degraded performance on the first query run.
+
 The app is deployed on Vercel at https://sqlm8.vercel.app/
-NOTE: Pleas note, I am using free instances @vercel/postgres via a hobby account. The query performance may be slightly degraded depending on various factors (not always the case).
 
 ### Walkthrough Video
 
