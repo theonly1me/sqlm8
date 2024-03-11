@@ -2,6 +2,11 @@
 
 SQLM8 is a web application that allows users to execute SQL queries and visualize the results. Below are the details of the project:
 
+### Deployment
+
+The app is deployed on Vercel at https://sqlm8.vercel.app/
+NOTE: Pleas note, I am using free instances @vercel/postgres via a hobby account. The query performance may be slightly degraded depending on various factors (not always the case).
+
 ### Walkthrough Video
 
 [Watch the walkthrough video](https://www.loom.com/share/439864795bea41ad9d2141e51794858f?sid=4b7d44d2-5935-40da-bd3e-e385e79a566b) showcasing the implementation details and demonstrating how to execute queries in SQLM8.
@@ -34,6 +39,7 @@ To decrease the load time and increase performance, the following optimizations 
 
 ### Improvements (future scope)
 
+- Add unit & integration tests (I did not have the time to do this)
 - Auto suggestions for SQL queries based on tables that are present
 - Paginated queries for larger data sets
 - Ability to format the SQL code with a button click / keypress
