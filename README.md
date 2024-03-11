@@ -6,19 +6,22 @@ SQLM8 is a web application that allows users to execute SQL queries and visualiz
 
 [Watch the walkthrough video](#) showcasing the implementation details and demonstrating how to execute queries in SQLM8.
 
-### JavaScript Framework and Packages
+### Framework and dependencies
 
-- **Framework**: Next.js
-- **Major Plugins/Packages**:
-  - `@monaco-editor/react` for the SQL query editor.
-  - `@nextui-org/react` for UI components.
-  - `framer-motion` for animations.
-  - `react-icons` for icon components.
-  - `sqlite` and `sqlite3` for SQLite database handling.
+- **Framework**: Next.js 14 (App Router) | React 18
+- **Major dependencies**:
+  - `@monaco-editor/react` for the SQL query editor
+  - `tailwindcss` - for styling
+  - `@nextui-org/react` for certain UI components
+  - `framer-motion` for animations - requirement for nextui
+  - `sqlite` and `sqlite3` for SQLite database handling & query execution
 
 ### Page Load Time
 
---
+![ligbhthouse benchmarks](./benchmark.png)
+![chrome dev tools performance benchmark](./performance.png)
+
+The detailed lighthouse benchmark report can be found here: [benchmark](./benchmarks.html)
 
 ### Optimizations
 
@@ -27,7 +30,7 @@ To decrease the load time and increase performance, the following optimizations 
 - **Code Splitting**: Next.js automatically splits the code into smaller chunks, resulting in faster page loads.
 - **Lazy Loading**: Components and libraries are lazily loaded to reduce the initial bundle size and improve load times.
 - **Minification and Compression**: JavaScript and CSS files are minified and compressed to reduce file sizes and decrease load times.
-- **Server-side Rendering (SSR)**: Next.js provides SSR out of the box, improving the perceived performance of the application by rendering pages on the server before sending them to the client.
+- **Server-side Rendering (SSR)**: Next.js provides SSR out of the box, improving the perceived performance of the application by rendering pages on the server before sending them to the client. In this case, SSR is primarily used for SQL query execution in the SQLite database.
 
 ### How to Run
 
