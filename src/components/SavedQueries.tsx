@@ -56,6 +56,7 @@ const SavedQueries: React.FC<SavedQueriesProps> = ({ handleQuerySelect }) => {
         table: 'queries-container',
         base: 'max-h-[500px] overflow-scroll',
       }}
+      aria-label="Saved queries"
     >
       <TableHeader>
         <TableColumn>Saved</TableColumn>

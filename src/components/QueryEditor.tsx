@@ -1,3 +1,4 @@
+'use client';
 import React, { useRef, useState, useEffect } from 'react';
 import Editor from '@monaco-editor/react';
 import { Button } from '@nextui-org/react';
@@ -20,8 +21,6 @@ const QueryEditor: React.FC<QueryEditorProps> = ({
   handleContextChange,
   setResults,
 }) => {
-  const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
   //refs
   const saveQueryInputRef = useRef<HTMLInputElement>(null);
 
@@ -120,7 +119,7 @@ const QueryEditor: React.FC<QueryEditorProps> = ({
       <Editor
         // @ts-ignore
         name="queryEditor"
-        theme={isDarkMode ? 'vs-dark' : 'light'}
+        theme="vs-dark"
         language="sql"
         value={code.query}
         defaultValue={code.query}
