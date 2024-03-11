@@ -1,60 +1,12 @@
 'use server';
 
-import sqlite3 from 'sqlite3';
-import { Database, open } from 'sqlite';
-import fs from 'fs';
-import path from 'path';
-
-let db: Database;
-
-async function openDB() {
-  try {
-    const filePath = path.join('/tmp', 'database.db');
-    console.log('The file path is', filePath);
-    if (!fs.existsSync(filePath)) {
-      fs.openSync(filePath, 'w');
-    }
-
-    return open({
-      filename: filePath,
-      driver: sqlite3.cached.Database,
-    });
-  } catch (e) {
-    console.error('ERROR', e);
-  }
-}
+import { sql } from '@vercel/postgres';
 
 export async function populateDB() {
-  // @ts-ignore
-  db = await openDB();
-  try {
-    // (re-)create categories table
-    await db.exec('DROP TABLE IF EXISTS categories;');
+  // (re-)create customers table
+  await sql`DROP TABLE IF EXISTS customers;`;
 
-    await db.exec(`
-        CREATE TABLE categories (
-          categoryID INT,
-          categoryName VARCHAR(255),
-          description VARCHAR(255),
-          picture BLOB
-      );`);
-
-    await db.exec(`
-      INSERT INTO categories (categoryID, categoryName, description, picture)
-    VALUES
-    (1, 'Beverages', 'Soft drinks, coffees, teas, beers, and ales', '0x151C2F00020000000D000E0014002100FFFFFFFF4269746D617020496D616765005061696E742E5069637475726500010500000200000007000000504272757368000000000000000000A0290000424D98290000000000005600000028000000AC00000078000000010004000000000000000000880B0000880B0000080000'),
-    (2, 'Condiments', 'Sweet and savory sauces, relishes, spreads, and seasonings', '0x151C2F00020000000D000E0014002100FFFFFFFF4269746D617020496D616765005061696E742E5069637475726500010500000200000007000000504272757368000000000000000000A0290000424D98290000000000005600000028000000AC00000078000000010004000000000000000000880B0000880B0000080000'),
-    (3, 'Confections', 'Desserts, candies, and sweet breads', '0x151C2F00020000000D000E0014002100FFFFFFFF4269746D617020496D616765005061696E742E5069637475726500010500000200000007000000504272757368000000000000000000A0290000424D98290000000000005600000028000000AC00000078000000010004000000000000000000880B0000880B0000080000'),
-    (4, 'Dairy Products', 'Cheeses', '0x151C2F00020000000D000E0014002100FFFFFFFF4269746D617020496D616765005061696E742E5069637475726500010500000200000007000000504272757368000000000000000000A0290000424D98290000000000005600000028000000AC00000078000000010004000000000000000000880B0000880B0000080000'),
-    (5, 'Grains/Cereals', 'Breads, crackers, pasta, and cereal', '0x151C2F00020000000D000E0014002100FFFFFFFF4269746D617020496D616765005061696E742E5069637475726500010500000200000007000000504272757368000000000000000000A0290000424D98290000000000005600000028000000AC00000078000000010004000000000000000000880B0000880B0000080000'),
-    (6, 'Meat/Poultry', 'Prepared meats', '0x151C2F00020000000D000E0014002100FFFFFFFF4269746D617020496D616765005061696E742E5069637475726500010500000200000007000000504272757368000000000000000000A0290000424D98290000000000005600000028000000AC00000078000000010004000000000000000000880B0000880B0000080000'),
-    (7, 'Produce', 'Dried fruit and bean curd', '0x151C2F00020000000D000E0014002100FFFFFFFF4269746D617020496D616765005061696E742E5069637475726500010500000200000007000000504272757368000000000000000000A0290000424D98290000000000005600000028000000AC00000078000000010004000000000000000000880B0000880B0000080000'),
-    (8, 'Seafood', 'Seaweed and fish', '0x151C2F00020000000D000E0014002100FFFFFFFF4269746D617020496D616765005061696E742E5069637475726500010500000200000007000000504272757368000000000000000000A0290000424D98290000000000005600000028000000AC00000078000000010004000000000000000000880B0000880B0000080000');`);
-
-    // (re-)create customers table
-    await db.exec('DROP TABLE IF EXISTS customers;');
-
-    await db.exec(`
+  await sql`
     CREATE TABLE customers (
       customerID VARCHAR(5) PRIMARY KEY,
       companyName VARCHAR(255),
@@ -67,10 +19,9 @@ export async function populateDB() {
       country VARCHAR(255),
       phone VARCHAR(20),
       fax VARCHAR(20)
-    );
-    `);
+    );`;
 
-    await db.exec(`
+  await sql`
     INSERT INTO customers (customerID, companyName, contactName, contactTitle, address, city, region, postalCode, country, phone, fax) VALUES
     ('ALFKI', 'Alfreds Futterkiste', 'Maria Anders', 'Sales Representative', 'Obere Str. 57', 'Berlin', NULL, '12209', 'Germany', '030-0074321', '030-0076545'),
     ('ANATR', 'Ana Trujillo Emparedados y helados', 'Ana Trujillo', 'Owner', 'Avda. de la Constitución 2222', 'México D.F.', NULL, '05021', 'Mexico', '(5) 555-4729', '(5) 555-3745'),
@@ -163,15 +114,11 @@ export async function populateDB() {
     ('WHITC', 'White Clover Markets', 'Karl Jablonski', 'Owner', '305 - 14th Ave. S. Suite 3B', 'Seattle', 'WA', '98128', 'USA', '(206) 555-4112', '(206) 555-4115'),
     ('WILMK', 'Wilman Kala', 'Matti Karttunen', 'Owner/Marketing Assistant', 'Keskuskatu 45', 'Helsinki', NULL, '21240', 'Finland', '90-224 8858', '90-224 8858'),
     ('WOLZA', 'Wolski', 'Zbyszek', 'Owner', 'ul. Filtrowa 68', 'Warszawa', NULL, '01-012', 'Poland', '(26) 642-7012', '(26) 642-7012');
-    `);
-  } catch (e) {
-    console.error(e);
-  }
+    `;
 }
 
 export async function executeQuery(rawQuery: string) {
   try {
-    if (!db) await openDB();
     const query = rawQuery.replaceAll('\n', '');
     const queries = query.split(';').filter(q => q.trim() !== '');
 
@@ -180,13 +127,11 @@ export async function executeQuery(rawQuery: string) {
 
     for (const q of queries) {
       const trimmedQuery = q.trim();
-      const result = await db?.all(trimmedQuery);
+      const result = await sql.query(trimmedQuery);
 
-      if (result && result.length > 0) {
-        columnNames = Object.keys(result[0]);
-      }
+      lastResult = result.rows;
 
-      lastResult = result;
+      columnNames = result.fields.map(f => f.name);
     }
 
     return { columns: columnNames, result: lastResult };

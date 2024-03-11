@@ -11,10 +11,10 @@ SQLM8 is a web application that allows users to execute SQL queries and visualiz
 - **Framework**: Next.js 14 (App Router) | React 18
 - **Major dependencies**:
   - `@monaco-editor/react` for the SQL query editor
+  - `@vercel/postgres` Vercel's wrapper around serverless PostgreSQL instance using Neon
   - `tailwindcss` - for styling
   - `@nextui-org/react` for certain UI components
   - `framer-motion` for animations - requirement for nextui
-  - `sqlite` and `sqlite3` for SQLite database handling & query execution
 
 ### Page Load Time
 

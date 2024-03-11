@@ -44,7 +44,7 @@ export default function Home() {
           />
           <SavedQueries handleQuerySelect={handleContextChange} />
         </div>
-        <div className="w-full results-container">
+        <div className="w-full results-container flex flex-col gap-2">
           <ResultViewer
             columns={results?.columns || []}
             rows={results?.rows || []}

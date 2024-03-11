@@ -8,6 +8,7 @@ import {
   TableCell,
   Pagination,
   getKeyValue,
+  Chip,
 } from '@nextui-org/react';
 
 import { ResultViewerProps } from '@/types';
@@ -75,6 +76,9 @@ const ResultViewer: React.FC<ResultViewerProps> = ({
 
   return (
     <>
+      <Chip color="default" variant="flat">
+        {rows.length} records found
+      </Chip>
       <Table
         aria-label="Query results"
         bottomContent={
@@ -83,7 +87,7 @@ const ResultViewer: React.FC<ResultViewerProps> = ({
               isCompact
               showControls
               showShadow
-              color="secondary"
+              color="primary"
               page={page}
               total={pages}
               onChange={page => setPage(page)}
