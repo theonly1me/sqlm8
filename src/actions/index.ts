@@ -7,12 +7,12 @@ import fs from 'fs';
 let db: Database;
 
 async function openDB() {
-  if (!fs.existsSync('./tmp/database.db')) {
-    fs.openSync('./tmp/database.db', 'w');
+  if (!fs.existsSync('/tmp/database.db')) {
+    fs.openSync('/tmp/database.db', 'w');
   }
 
   return open({
-    filename: './tmp/database.db',
+    filename: '/tmp/database.db',
     driver: sqlite3.cached.Database,
   });
 }
