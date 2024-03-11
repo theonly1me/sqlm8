@@ -3,21 +3,29 @@
 import sqlite3 from 'sqlite3';
 import { Database, open } from 'sqlite';
 import fs from 'fs';
+import path from 'path';
 
 let db: Database;
 
 async function openDB() {
-  if (!fs.existsSync('/tmp/database.db')) {
-    fs.openSync('/tmp/database.db', 'w');
-  }
+  try {
+    const filePath = path.join('/tmp', 'database.db');
+    console.log('The file path is', filePath);
+    if (!fs.existsSync(filePath)) {
+      fs.openSync(filePath, 'w');
+    }
 
-  return open({
-    filename: '/tmp/database.db',
-    driver: sqlite3.cached.Database,
-  });
+    return open({
+      filename: filePath,
+      driver: sqlite3.cached.Database,
+    });
+  } catch (e) {
+    console.error('ERROR', e);
+  }
 }
 
 export async function populateDB() {
+  // @ts-ignore
   db = await openDB();
   try {
     // (re-)create categories table
