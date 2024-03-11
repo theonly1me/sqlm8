@@ -53,7 +53,6 @@ const SavedQueries: React.FC<SavedQueriesProps> = ({ handleQuerySelect }) => {
       className="w-1/4"
       classNames={{
         th: 'text-sm',
-        table: 'queries-container',
         base: 'max-h-[500px] overflow-scroll',
       }}
       aria-label="Saved queries"
