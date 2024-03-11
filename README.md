@@ -4,7 +4,7 @@ SQLM8 is a web application that allows users to execute SQL queries and visualiz
 
 ### Walkthrough Video
 
-[Watch the walkthrough video](#) showcasing the implementation details and demonstrating how to execute queries in SQLM8.
+[Watch the walkthrough video](https://www.loom.com/share/439864795bea41ad9d2141e51794858f?sid=4b7d44d2-5935-40da-bd3e-e385e79a566b) showcasing the implementation details and demonstrating how to execute queries in SQLM8.
 
 ### Framework and dependencies
 
@@ -31,6 +31,12 @@ To decrease the load time and increase performance, the following optimizations 
 - **Lazy Loading**: Components and libraries are lazily loaded to reduce the initial bundle size and improve load times.
 - **Minification and Compression**: JavaScript and CSS files are minified and compressed to reduce file sizes and decrease load times.
 - **Server-side Rendering (SSR)**: Next.js provides SSR out of the box, improving the perceived performance of the application by rendering pages on the server before sending them to the client. In this case, SSR is primarily used for SQL query execution in the SQLite database.
+
+### Improvements (future scope)
+
+- Auto suggestions for SQL queries based on tables that are present
+- Paginated queries for larger data sets
+- Ability to format the SQL code with a button click / keypress
 
 ### How to Run
 
