@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## SQLM8
 
-## Getting Started
+SQLM8 is a web application that allows users to execute SQL queries and visualize the results. Below are the details of the project:
 
-First, run the development server:
+### Walkthrough Video
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+[Watch the walkthrough video](#) showcasing the implementation details and demonstrating how to execute queries in SQLM8.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### JavaScript Framework and Packages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Framework**: Next.js
+- **Major Plugins/Packages**:
+  - `@monaco-editor/react` for the SQL query editor.
+  - `@nextui-org/react` for UI components.
+  - `framer-motion` for animations.
+  - `react-icons` for icon components.
+  - `sqlite` and `sqlite3` for SQLite database handling.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Page Load Time
 
-## Learn More
+--
 
-To learn more about Next.js, take a look at the following resources:
+### Optimizations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+To decrease the load time and increase performance, the following optimizations were implemented:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Code Splitting**: Next.js automatically splits the code into smaller chunks, resulting in faster page loads.
+- **Lazy Loading**: Components and libraries are lazily loaded to reduce the initial bundle size and improve load times.
+- **Minification and Compression**: JavaScript and CSS files are minified and compressed to reduce file sizes and decrease load times.
+- **Server-side Rendering (SSR)**: Next.js provides SSR out of the box, improving the perceived performance of the application by rendering pages on the server before sending them to the client.
 
-## Deploy on Vercel
+### How to Run
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To run the SQLM8 application locally, follow these steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+1. Clone the repository: `git clone https://github.com/theonly1me/sqlm8.git`
+2. Navigate to the project directory: `cd sqlm8`
+3. Install dependencies: `npm install`
+4. Start the development server: `npm run dev`
+5. Open your browser and visit `http://localhost:3000`
+
+### License
+
+This project is licensed under the MIT License
