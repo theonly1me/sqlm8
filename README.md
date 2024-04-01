@@ -8,10 +8,6 @@ SQLM8 is a web application that allows users to execute SQL queries and visualiz
 
 The app is deployed on Vercel at https://sqlm8.vercel.app/
 
-### Walkthrough Video
-
-[Watch the walkthrough video](https://www.loom.com/share/439864795bea41ad9d2141e51794858f?sid=4b7d44d2-5935-40da-bd3e-e385e79a566b) showcasing the implementation details and demonstrating how to execute queries in SQLM8.
-
 ### Framework and dependencies
 
 - **Framework**: Next.js 14 (App Router) | React 18
